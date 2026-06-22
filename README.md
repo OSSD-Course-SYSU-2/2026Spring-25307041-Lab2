@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 迷宫小游戏
 
 一个基于HarmonyOS开发的迷宫小游戏，支持角色移动和方块炸毁功能。
@@ -133,3 +134,6 @@ entry/src/main/ets/
 ## 许可证
 
 本项目仅供学习和研究使用。
+=======
+# OSSD-Course-SYSU-2-2026Spring-25307041-Lab2
+>>>>>>> d4a62175ae45dbb16ba2e9ec2e71fa320c05935e
