@@ -14,48 +14,6 @@
 - 🎯 **胜利条件**：从入口（蓝色）到达出口（绿色）
 - 📱 **触摸控制**：5个屏幕按钮，适合手机操作
 
-## 项目结构
-
-```
-entry/src/main/ets/
-├── common/              # 公共工具类
-├── components/          # UI组件
-│   ├── MazeView.ets     # 迷宫视图组件
-│   ├── ControlPanel.ets # 控制面板组件
-│   └── StatusDisplay.ets# 状态显示组件
-├── models/              # 数据模型
-│   ├── Enums.ets        # 枚举定义
-│   ├── Interfaces.ets   # 接口定义
-│   ├── MazeData.ets     # 迷宫数据类
-│   ├── PlayerData.ets   # 玩家数据类
-│   └── GameConfig.ets   # 游戏配置类
-├── controllers/         # 控制器
-│   ├── MazeGenerator.ets    # 迷宫生成器
-│   ├── MovementController.ets # 移动控制器
-│   ├── DestroyController.ets  # 炸毁控制器
-│   └── GameEngine.ets    # 游戏引擎
-├── utils/               # 工具函数
-│   ├── Logger.ets       # 日志工具
-│   └── ScreenUtil.ets   # 屏幕工具
-└── pages/               # 页面
-    └── MainPage.ets     # 主页面
-```
-
-## 如何运行
-
-### 前置要求
-
-1. 安装DevEco Studio
-2. 配置HarmonyOS SDK
-3. 创建或导入项目
-
-### 运行步骤
-
-1. 在DevEco Studio中打开项目
-2. 等待项目同步和编译完成
-3. 点击运行按钮，选择DevEco虚拟机
-4. 等待应用安装并启动
-
 ## 游戏玩法
 
 1. **开始游戏**：点击任意控制按钮开始游戏
@@ -72,68 +30,13 @@ entry/src/main/ets/
    - 深灰色的不可摧毁方块无法炸毁
 4. **到达出口**：从蓝色入口移动到绿色出口即可通关
 5. **重新开始**：点击"重新开始"按钮重置游戏
+6. 重新开始后会生成新的随机地图
+且该程序可以在手机平板和手表上正常运行，考虑到手表比较小，程序在手表上可以上下滑动以保障按键足够大，而且这样还可以引出游戏的“盲走”玩法
+<img width="612" height="1320" alt="b2bf996c5d20f828ffe6f53b54899cb" src="https://github.com/user-attachments/assets/a3cdd001-a82e-45b8-a4c8-e38ae2834c57" />
+<img width="608" height="1336" alt="00b73a3da4cc38591993b96091d81b8" src="https://github.com/user-attachments/assets/489649d5-ee1c-46da-a10c-426da943749c" />
+<img width="607" height="1328" alt="a1c2255915aa5e264e7676cf03d98be" src="https://github.com/user-attachments/assets/bddc24a3-d711-4db3-899e-c16717dac5a9" />
+<img width="1196" height="732" alt="f497e7940d4ee0551fedbfc5dd105d3" src="https://github.com/user-attachments/assets/80f6c08d-e6b2-4d4c-9163-43d49474b5ac" />
+<img width="598" height="1312" alt="24d78a8f0b91711956baa8bd9fb9907" src="https://github.com/user-attachments/assets/4f6578ad-2224-4525-910a-be2f93c1fbf8" />
+<img width="564" height="661" alt="6f7296d02a123d7b9ef8bc1de4c3271" src="https://github.com/user-attachments/assets/7d7d047c-5c00-42d6-8e64-97bf03798b65" />
+<img width="572" height="523" alt="b9b67de6e24f54c0949a6160d2c5bea" src="https://github.com/user-attachments/assets/d5a3d3e2-be00-4e72-ae11-aa99ba680d5c" />
 
-## 技术实现
-
-### 核心算法
-
-- **迷宫生成**：使用随机Prim算法生成迷宫，确保迷宫可解
-- **路径验证**：使用BFS算法验证从入口到出口的路径可达性
-- **移动验证**：检查目标位置是否可通过（空地、入口、出口）
-- **炸毁验证**：检查角色周围是否有可炸毁方块，一次性炸毁所有相邻的可炸毁方块
-
-### 设计模式
-
-- **MVC架构**：模型-视图-控制器分离
-- **单一职责**：每个类只负责一个功能
-- **依赖注入**：控制器通过构造函数接收依赖
-
-### 性能优化
-
-- 使用@Prop减少不必要的渲染
-- 迷宫生成算法优化
-- 状态批量更新
-
-## 配置说明
-
-可在 `GameConfig.ets` 中修改以下配置：
-
-- `MAZE_WIDTH`：迷宫宽度（默认15）
-- `MAZE_HEIGHT`：迷宫高度（默认15）
-- `BLOCK_SIZE`：方块尺寸（默认30）
-- `DESTRUCTIBLE_RATIO`：可炸毁方块比例（默认0.3）
-- `MOVE_DURATION`：移动动画时长（默认200ms）
-- `DESTROY_DURATION`：炸毁动画时长（默认300ms）
-
-## 开发说明
-
-### 扩展功能
-
-可以通过以下方式扩展游戏功能：
-
-1. 添加关卡系统
-2. 添加计时器和步数统计
-3. 添加音效和背景音乐
-4. 添加更多方块类型
-5. 添加道具系统
-6. 添加排行榜
-
-### 注意事项
-
-- 确保在DevEco Studio中正确配置项目
-- 测试时建议使用真机或高性能虚拟机
-- 修改配置后需要重新编译项目
-
-## 版本信息
-
-- **版本**：v1.0
-- **开发框架**：HarmonyOS + ArkTS + ArkUI
-- **最低API版本**：API 9
-- **目标API版本**：API 9
-
-## 许可证
-
-本项目仅供学习和研究使用。
-=======
-# OSSD-Course-SYSU-2-2026Spring-25307041-Lab2
->>>>>>> d4a62175ae45dbb16ba2e9ec2e71fa320c05935e
